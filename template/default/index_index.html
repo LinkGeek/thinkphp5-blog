@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html>
+<head>  
+<title>{:config('web.WEB_TIT')}</title>
+<meta name="keywords" content="{:config('web.WEB_KEY')}">
+<meta name="description" content="{:config('web.WEB_DES')}">
+{include file="index/header"}
+<!-- <link rel="stylesheet" href="__HOME__/css/music.css"> -->
+<link rel="stylesheet" href="__HOME__/css/index.css">
+<link rel="stylesheet" href="__HOME__/css/right.css">
+<div class="blog-wp cl">
+	<div class="blog-ml-7">
+		<div class="blog-con1">
+			<!-- 轮播 -->
+			<div class="blog-banner blog-none-768 cl">
+				<div class="layui-carousel" id="banner">
+					<div carousel-item>
+						<div>
+							<a target="_blank" href="#">
+								<img src="__ROOT__/uploads/banner/banner1.png">
+							</a>
+						</div>
+						<div>
+							<a target="_blank" href="#">
+								<img src="__ROOT__/uploads/banner/banner2.jpg">
+							</a>
+						</div>
+						<div>
+							<a target="_blank" href="#">
+								<img src="__ROOT__/uploads/banner/banner3.jpg">
+							</a>
+						</div>
+					</div>
+				</div>
+				<script type="text/javascript">
+					layui.use('carousel', function(){
+						var carousel = layui.carousel;
+
+						carousel.render({
+							elem: '#banner'
+							,width: '100%'
+							,height: '320px'
+							,interval: 3000
+							,anim: 'fade'
+							,arrow: 'always' //始终显示箭头
+						});
+					});
+				</script>
+			</div>
+			<!-- 顶置推荐 -->
+			<div class="blog-zhiding blog-none-768 blog-none-1024 blog-none-1200 cl">
+				<h3>顶置推荐</h3>
+				<ul>
+					<li>
+						<a href="#">
+							<img src="__ROOT__/uploads/article/ac1.jpg" alt="">
+						</a>
+						<h2>
+							<a href="#" title="">谷歌如何推动 VR/AR 的生态发展和技术边界</a>
+						</h2>
+					</li>
+					<li>
+						<a href="#">
+							<img src="__ROOT__/uploads/article/ac2.jpg" alt="">
+						</a>
+						<h2><a href="#" title="">致力于让机器像人类大脑一样工作的Numenta</a></h2>
+					</li>
+					<li>
+						<a href="#">
+							<img src="__ROOT__/uploads/article/ac3.jpg" alt="">
+						</a>
+						<h2><a href="#" title="">揭秘中国X86 CPU两大阵营，海光、兆芯谁更强？</a></h2>
+					</li>
+				</ul>
+			</div>
+
+			<div class="blog-none-768 blog-none-1024 blog-none-1200 blog-bottom"></div>
+			<!-- 最新用户 -->
+			<div class="blog-heads blog-none-768 blog-none-1024 blog-none-1200 cl">
+				<h3>最新用户</h3>
+				<ul>
+					<li>
+						<a href="#"><img src="__ROOT__/uploads/users/default.png" alt=""></a>
+						<p><a href="#" title="">李白</a></p>
+					</li>
+					<li>
+						<a href="#"><img src="__ROOT__/uploads/users/04.jpg" alt=""></a>
+						<p><a href="#" title="">女娲</a></p>
+					</li>
+					<li>
+						<a href="#"><img src="__ROOT__/uploads/users/01.jpg" alt=""></a>
+						<p><a href="#" title="">项羽</a></p>
+					</li>
+					<li>
+						<a href="#"><img src="__ROOT__/uploads/users/03.jpg" alt=""></a>
+						<p><a href="#" title="">猴子</a></p>
+					</li>
+					<li>
+						<a href="#"><img src="__ROOT__/uploads/users/user.jpg" alt=""></a>
+						<p><a href="#" title="">安琪拉</a></p>
+					</li>
+					<li>
+						<a href="#"><img src="__ROOT__/uploads/users/04.jpg" alt=""></a>
+						<p><a href="#" title="">宫本</a></p>
+					</li>
+					<li>
+						<a href="#"><img src="__ROOT__/uploads/users/02.jpg" alt=""></a>
+						<p><a href="#" title="">老夫子</a></p>
+					</li>
+					<li>
+						<a href="#"><img src="__ROOT__/uploads/users/01.jpg" alt=""></a>
+						<p><a href="#" title="">貂蝉</a></p>
+					</li>
+				</ul>
+			</div>
+
+			<div class="blog-none-768 blog-none-1024 blog-none-1200 blog-bottom"></div>
+
+			<!-- 最新文章 -->
+			<div class="blog-article">
+				<h3>最新文章</h3>
+				<ul class="blog-list">
+					<li class="blog-list-li">
+						<div class="mod-angle"></div>
+						<a href="#" class="blog-list-avatar">
+							<img src="__ROOT__/uploads/article/ac1.jpg">
+						</a>
+						<h2 class="blog-tip"><a href="#">从 I/O 大会看谷歌如何推动 VR/AR 的生态发展和技术边界 | Google I/O 2017</a></h2>
+						<p>
+							<span><a href="#"><img src="__ROOT__/uploads/users/03.jpg" alt="">再贱就再见</a></span>
+							<span class="blog-none-768">2017-12-09 13:28:19</span>
+							<span class="blog-list-hint" style="padding-right: 0;"> 
+								<i class="iconfont" title="回答"></i> 13<i class="iconfont" title="人气" style="font-size: 20px;position: relative;top: 2px;"></i> 2018
+							</span>
+						</p>
+						<p class="blog-none-768">
+						谷歌的故事一切还要从说起三年前大会上推出纸盒眼镜你可以自己拼装把手机放进去观看度的视频或是玩一款小游戏当时所有人都以为谷歌在跟大家开玩笑后来...
+						</p>
+						<p style="padding-top: 0;line-height: 20px;">
+							<span class="blog-none-768 blog-none-1024 blog-none-1200 fr" style="padding-right: 0;">
+								<a href="#">虚拟现实</a>
+							</span>
+						</p>
+					</li>
+					<li class="blog-list-li">
+						<div class="mod-angle"></div>
+						<a href="#" class="blog-list-avatar">
+							<img src="__ROOT__/uploads/article/ac2.jpg">
+						</a>
+						<h2 class="blog-tip"><a href="#">从 I/O 大会看谷歌如何推动 VR/AR 的生态发展和技术边界 | Google I/O 2017</a></h2>
+						<p>
+							<span><a href="#"><img src="__ROOT__/uploads/users/03.jpg" alt="">再贱就再见</a></span>
+							<span class="blog-none-768">2017-12-09 13:28:19</span>
+							<span class="blog-list-hint" style="padding-right: 0;"> 
+								<i class="iconfont" title="回答"></i> 13<i class="iconfont" title="人气" style="font-size: 20px;position: relative;top: 2px;"></i> 2018
+							</span>
+						</p>
+						<p class="blog-none-768">
+						谷歌的故事一切还要从说起三年前大会上推出纸盒眼镜你可以自己拼装把手机放进去观看度的视频或是玩一款小游戏当时所有人都以为谷歌在跟大家开玩笑后来...
+						</p>
+						<p style="padding-top: 0;line-height: 20px;">
+							<span class="blog-none-768 blog-none-1024 blog-none-1200 fr" style="padding-right: 0;">
+								<a href="#">智慧大脑</a>
+							</span>
+						</p>
+					</li>
+					<li class="blog-list-li">
+						<div class="mod-angle"></div>
+						<a href="#" class="blog-list-avatar">
+							<img src="__ROOT__/uploads/article/ac3.jpg">
+						</a>
+						<h2 class="blog-tip"><a href="#">从 I/O 大会看谷歌如何推动 VR/AR 的生态发展和技术边界 | Google I/O 2017</a></h2>
+						<p>
+							<span><a href="#"><img src="__ROOT__/uploads/users/03.jpg" alt="">再贱就再见</a></span>
+							<span class="blog-none-768">2017-12-09 13:28:19</span>
+							<span class="blog-list-hint" style="padding-right: 0;"> 
+								<i class="iconfont" title="回答"></i> 13<i class="iconfont" title="人气" style="font-size: 20px;position: relative;top: 2px;"></i> 2018
+							</span>
+						</p>
+						<p class="blog-none-768">
+						谷歌的故事一切还要从说起三年前大会上推出纸盒眼镜你可以自己拼装把手机放进去观看度的视频或是玩一款小游戏当时所有人都以为谷歌在跟大家开玩笑后来...
+						</p>
+						<p style="padding-top: 0;line-height: 20px;">
+							<span class="blog-none-768 blog-none-1024 blog-none-1200 fr" style="padding-right: 0;">
+								<a href="#">深度学习</a>
+							</span>
+						</p>
+					</li>
+					<li class="blog-list-li">
+						<div class="mod-angle"></div>
+						<a href="#" class="blog-list-avatar">
+							<img src="__ROOT__/uploads/article/ac1.jpg">
+						</a>
+						<h2 class="blog-tip"><a href="#">从 I/O 大会看谷歌如何推动 VR/AR 的生态发展和技术边界 | Google I/O 2017</a></h2>
+						<p>
+							<span><a href="#"><img src="__ROOT__/uploads/users/03.jpg" alt="">再贱就再见</a></span>
+							<span class="blog-none-768">2017-12-09 13:28:19</span>
+							<span class="blog-list-hint" style="padding-right: 0;"> 
+								<i class="iconfont" title="回答"></i> 13<i class="iconfont" title="人气" style="font-size: 20px;position: relative;top: 2px;"></i> 2018
+							</span>
+						</p>
+						<p class="blog-none-768">
+						谷歌的故事一切还要从说起三年前大会上推出纸盒眼镜你可以自己拼装把手机放进去观看度的视频或是玩一款小游戏当时所有人都以为谷歌在跟大家开玩笑后来...
+						</p>
+						<p style="padding-top: 0;line-height: 20px;">
+							<span class="blog-none-768 blog-none-1024 blog-none-1200 fr" style="padding-right: 0;">
+								<a href="#">大数据</a>
+							</span>
+						</p>
+					</li>
+					<li class="blog-list-li">
+						<div class="mod-angle"></div>
+						<a href="#" class="blog-list-avatar">
+							<img src="__ROOT__/uploads/article/ac3.jpg">
+						</a>
+						<h2 class="blog-tip"><a href="#">从 I/O 大会看谷歌如何推动 VR/AR 的生态发展和技术边界 | Google I/O 2017</a></h2>
+						<p>
+							<span><a href="#"><img src="__ROOT__/uploads/users/03.jpg" alt="">再贱就再见</a></span>
+							<span class="blog-none-768">2017-12-09 13:28:19</span>
+							<span class="blog-list-hint" style="padding-right: 0;"> 
+								<i class="iconfont" title="回答"></i> 13<i class="iconfont" title="人气" style="font-size: 20px;position: relative;top: 2px;"></i> 2018
+							</span>
+						</p>
+						<p class="blog-none-768">
+						谷歌的故事一切还要从说起三年前大会上推出纸盒眼镜你可以自己拼装把手机放进去观看度的视频或是玩一款小游戏当时所有人都以为谷歌在跟大家开玩笑后来...
+						</p>
+						<p style="padding-top: 0;line-height: 20px;">
+							<span class="blog-none-768 blog-none-1024 blog-none-1200 fr" style="padding-right: 0;">
+								<a href="#">人工智能</a>
+							</span>
+						</p>
+					</li>
+					<li class="blog-list-li">
+						<div class="mod-angle"></div>
+						<a href="#" class="blog-list-avatar">
+							<img src="__ROOT__/uploads/article/ac2.jpg">
+						</a>
+						<h2 class="blog-tip"><a href="#">从 I/O 大会看谷歌如何推动 VR/AR 的生态发展和技术边界 | Google I/O 2017</a></h2>
+						<p>
+							<span><a href="#"><img src="__ROOT__/uploads/users/03.jpg" alt="">再贱就再见</a></span>
+							<span class="blog-none-768">2017-12-09 13:28:19</span>
+							<span class="blog-list-hint" style="padding-right: 0;"> 
+								<i class="iconfont" title="回答"></i> 13<i class="iconfont" title="人气" style="font-size: 20px;position: relative;top: 2px;"></i> 2018
+							</span>
+						</p>
+						<p class="blog-none-768">
+						谷歌的故事一切还要从说起三年前大会上推出纸盒眼镜你可以自己拼装把手机放进去观看度的视频或是玩一款小游戏当时所有人都以为谷歌在跟大家开玩笑后来...
+						</p>
+						<p style="padding-top: 0;line-height: 20px;">
+							<span class="blog-none-768 blog-none-1024 blog-none-1200 fr" style="padding-right: 0;">
+								<a href="#">智慧大脑</a>
+							</span>
+						</p>
+					</li>
+				</ul>
+			</div>
+			<!-- 页数 -->
+			<div class="pages">
+				<ul class="pagination">
+					<li class="disabled"><span>«</span></li> 
+					<li class="active"><span>1</span></li>
+					<li><a href="/?page=2">2</a></li> 
+					<li><a href="/?page=2">»</a></li>
+				</ul>
+			</div>
+		</div>
+	</div>
+
+	<!-- 右侧 -->
+	{include file="index/right"} 
+</div>
+<!-- {include file="index/music"}  -->
+{include file="index/footer"} 
+
+<!-- <script type="text/javascript" src="__HOME__/js/jquery.min.js"></script>
+<script type="text/javascript" src="__HOME__/js/jquery.marquee.min.js"></script>
+<script type="text/javascript" src="__HOME__/js/music.js"></script>
+<script type="text/javascript" src="__HOME__/js/player.js"></script>
+<script>
+	function bgChange(){
+		var lis= $('.lib');
+		for(var i=0; i<lis.length; i+=2)
+		lis[i].style.background = 'rgba(246, 246, 246, 0.5)';
+	}
+	window.onload = bgChange;
+</script> -->
+
+<script type="text/javascript" src="__HOME__/js/base.js"></script>
+</body>
+</html>

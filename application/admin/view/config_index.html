@@ -1,0 +1,237 @@
+{include file="index/header"}
+<body>
+<div class="fly-panel fly-panel-user">
+<div class="tpt—admin">
+<style type="text/css">
+.tpt_sels a{padding-right:15px;position:relative}
+.tpt_sels a{padding:0 20px 0 8px;color:#3B6268;background:#FFFFBA;border:1px #F8E06E solid;margin-right:5px;margin-bottom:5px;font-size:14px;height:26px;line-height:26px;display:block;float:left}
+.tpt_sels a em{width: 12px;height: 12px;font-style: normal;display: block;position: absolute;top: 7px;right: 4px;z-index: 2;background: url(__ADMIN__/img/sx.png) no-repeat 0 0;}
+</style>
+<form class="layui-form">
+
+<div class="layui-tab">
+  <ul class="layui-tab-title">
+    <li class="layui-this">基本设置</li>
+    <li>常用设置</li>
+  </ul>
+  <div class="layui-tab-content" style="padding: 20px 0 0 0;">
+    <div class="layui-tab-item layui-show">
+	
+	
+  <div class="layui-form-item">
+    <label class="layui-form-label">标题</label>
+    <div class="layui-input-block">
+	  <input type="text" name="WEB_TIT" value="{:config('web.WEB_TIT')}" placeholder="请输入内容" autocomplete="off" class="layui-input">
+    </div>
+  </div>
+
+  <div class="layui-form-item">
+    <label class="layui-form-label">网址</label>
+    <div class="layui-input-block">
+	  <input type="text" name="WEB_COM" value="{:config('web.WEB_COM')}" placeholder="请输入内容" autocomplete="off" class="layui-input">
+    </div>
+  </div>
+
+  <div class="layui-form-item">
+    <label class="layui-form-label">作者</label>
+    <div class="layui-input-block">
+      <input type="text" name="WEB_AUT" value="{:config('web.WEB_AUT')}" placeholder="请输入内容" autocomplete="off" class="layui-input">
+    </div>
+  </div>
+
+  <div class="layui-form-item">
+    <label class="layui-form-label">QQ</label>
+    <div class="layui-input-block">
+      <input type="text" name="WEB_QQ" value="{:config('web.WEB_QQ')}" placeholder="请输入内容" autocomplete="off" class="layui-input">
+    </div>
+  </div>
+
+  <div class="layui-form-item">
+    <label class="layui-form-label">备案</label>
+    <div class="layui-input-block">
+      <input type="text" name="WEB_ICP" value="{:config('web.WEB_ICP')}" placeholder="请输入内容" autocomplete="off" class="layui-input">
+    </div>
+  </div>
+
+  <div class="layui-form-item">
+    <label class="layui-form-label">会员注册</label>
+    <div class="layui-input-block">
+      <input type="radio" name="WEB_REG" value="1" title="开启" {if condition="config('web.WEB_REG') eq 1"}checked{/if}>
+      <input type="radio" name="WEB_REG" value="0" title="关闭" {if condition="config('web.WEB_REG') eq 0"}checked{/if}>
+    </div>
+  </div>
+
+  <div class="layui-form-item">
+    <label class="layui-form-label">发帖审核</label>
+    <div class="layui-input-block">
+      <input type="radio" name="WEB_OPE" value="0" title="开启" {if condition="config('web.WEB_OPE') eq 0"}checked{/if}>
+	  <input type="radio" name="WEB_OPE" value="1" title="关闭" {if condition="config('web.WEB_OPE') eq 1"}checked{/if}>
+    </div>
+  </div>
+
+  <div class="layui-form-item">
+    <label class="layui-form-label">关键词</label>
+    <div class="layui-input-block">
+      <input type="text" name="WEB_KEY" value="{:config('web.WEB_KEY')}" placeholder="请输入内容" autocomplete="off" class="layui-input">
+    </div>
+  </div>
+
+  <div class="layui-form-item">
+    <label class="layui-form-label">描述</label>
+    <div class="layui-input-block">
+	  <textarea name="WEB_DES" placeholder="请输入内容" class="layui-textarea">{:config('web.WEB_DES')}</textarea>
+    </div>
+  </div>
+
+  
+	
+	</div>
+    <div class="layui-tab-item">
+	
+
+  <div class="layui-form-item">
+    <label class="layui-form-label">PC模板</label>
+    <div class="layui-input-block">
+	  <input type="text" name="WEB_TPT" value="{:config('web.WEB_TPT')}" placeholder="请输入内容" autocomplete="off" class="layui-input">
+    </div>
+  </div>
+
+  <div class="layui-form-item">
+    <label class="layui-form-label">手机模板</label>
+    <div class="layui-input-block">
+	  <input type="text" name="WEB_MOB" value="{:config('web.WEB_MOB')}" placeholder="请输入内容" autocomplete="off" class="layui-input">
+    </div>
+  </div>
+
+  <div class="layui-form-item">
+    <label class="layui-form-label">伪静态</label>
+    <div class="layui-input-block">
+	  <input type="radio" name="WEB_URL" value="1" title="开启" {if condition="config('web.WEB_URL') eq 1"}checked{/if}>
+      <input type="radio" name="WEB_URL" value="0" title="关闭" {if condition="config('web.WEB_URL') eq 0"}checked{/if}>
+    </div>
+  </div>
+
+  <div class="tpt_item">
+	<input type="hidden" name="WEB_TAG" value="{:config('web.WEB_TAG')}">
+	<div id="tpt_sel" class="tpt_sels" style="margin-top: 20px;">
+		<span style="margin-bottom: 5px;float: left;margin-left: 110px;">
+		{if condition="config('web.WEB_TAG') neq ''"}<?php $arr=explode(',', config('web.WEB_TAG'));foreach ($arr as $k=>$v){echo "<a href='javascript:;'>$v<em></em></a>";}?>{/if}
+		</span>
+		<div class="layui-form-item" style="margin-bottom: 20px;">
+			<label class="layui-form-label">标签</label>
+			<div class="layui-input-block">
+				<input id="tpt_input" type="text" value="" autocomplete="off" class="layui-input" style="width: 400px;float: left;margin-right: 20px;">
+				<button class="layui-btn" id="tpt_btn" type="button" style="background: #FF5722;">添加标签</button>
+			</div>
+		</div>
+	</div>
+  </div>
+
+
+
+	
+	</div>
+  </div>
+</div>
+
+  <div class="layui-form-item">
+    <div class="layui-input-block">
+	  <button class="layui-btn" lay-submit="" lay-filter="config_add">立即提交</button>
+    </div>
+  </div>
+
+</form>
+
+</div>
+</div>
+<script type="text/javascript">
+$(function() {
+	$('#tpt_input').keydown(function(e) {
+		if (e.which === 13) {
+			$("#tpt_btn").click();
+			e.preventDefault();
+			return false;
+		}
+	});
+	$("#tpt_sel").on('click', 'a>em', function() {
+		var name = "WEB_TAG";
+		var tag = $(this).parent().text();
+		$(this).parent().remove();
+		var tags = new Array();
+		$("#tpt_sel").find('a').each(function() {
+			tags.push($(this).text());
+		});
+		$("input[name=" + name + "]").val(tags.join(","));
+		$("#tpt_pre a:contains('" + tag + "')").removeClass("selected");
+	});
+	$("#tpt_btn").click(function() {
+		var name = "WEB_TAG";
+		var tags = $.trim($("input[name=" + name + "]").val());
+		if (tags !== "") {
+			tags = tags.split(",");
+		} else {
+			tags = new Array();
+		}
+		var tag = $.trim($("#tpt_input").val());
+		if (tag !== '' && $.inArray(tag, tags) === -1) {
+			tags.push(tag);
+			$("#tpt_pre a:contains('" + tag + "')").addClass("selected");
+		}
+		$("#tpt_sel").children('span').empty();
+		$.each(tags, function(k, v) {
+			$("#tpt_sel").children('span').append('<a href="javascript:;">' + v + '<em></em></a>');
+		});
+		$("input[name=" + name + "]").val(tags.join(","));
+		$("#tpt_input").val('');
+	});
+	$("#tpt_pre").on('click', 'a:not(.selected)', function() {
+		var name = "WEB_TAG";
+		var tags = $.trim($("input[name=" + name + "]").val());
+		if (tags !== "") {
+			tags = tags.split(",");
+		} else {
+			tags = new Array();
+		}
+		var tag = $.trim($(this).text());
+		if (tag !== '' && $.inArray(tag, tags) === -1) {
+			tags.push(tag);
+		}
+		$("#tpt_sel").children('span').empty();
+		$.each(tags, function(k, v) {
+			$("#tpt_sel").children('span').append('<a href="javascript:;">' + v + '<em></em></a>');
+		});
+		$("input[name=" + name + "]").val(tags.join(","));
+		$(this).addClass('selected');
+	});
+});
+</script>
+<script>
+layui.use(['form','element'],function(){
+  var form = layui.form()
+  ,element = layui.element()
+  ,jq = layui.jquery;
+  
+  form.on('submit(config_add)', function(data){
+    loading = layer.load(2, {
+      shade: [0.2,'#000']
+    });
+    var param = data.field;
+    jq.post('{:url("config/add")}',param,function(data){
+      if(data.code == 200){
+        layer.close(loading);
+        layer.msg(data.msg, {icon: 1, time: 1000}, function(){
+          location.href = '{:url("config/index")}';
+        });
+      }else{
+        layer.close(loading);
+        layer.msg(data.msg, {icon: 2, anim: 6, time: 1000});
+      }
+    });
+    return false;
+  });
+
+})
+</script>
+{include file="index_footer"}
+</body>
+</html>

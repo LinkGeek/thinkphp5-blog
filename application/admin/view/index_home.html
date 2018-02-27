@@ -1,0 +1,34 @@
+{include file="index/header"}
+<body>
+<div class="tpt—index fly-panel fly-panel-user">
+<blockquote style="padding: 10px;border-left: 5px solid #009688;" class="layui-elem-quote">欢迎试用Tpt-Forum社区管理系统，先温馨提醒几个常见问题：</blockquote>
+<table width="100%">
+<tr>
+<td>尽管本程序在发布前已经经过严格测试，但我们依然强烈建议各位用户时常备份；</td>
+<td>如果需要开启伪静态，请先确认服务器或空间添加了伪静态规则；<a href="https://www.templet360.com/thread-3.html" style="color:#FF5722;" target="_blank">查看教程</a></td>
+</tr>
+<tr>
+<td>安装完成后请可以将index.php和admin.php里面安装代码删除；</td>
+<td>安装好程序后，一定要记得修改默认的密码和口令；</td>
+</tr>
+</table>
+<blockquote style="padding: 10px;border-left: 5px solid #009688;" class="layui-elem-quote">系统信息：</blockquote>
+<table width="100%">
+<tr><td width="110px">程序版本</td><td>Tpt-Forum 1.1 bata版 社区管理系统 <a href="https://www.templet360.com/" style="color:#FF5722;" target="_blank">查看最新版本</a></td></tr>
+<tr><td>服务器类型</td><td>{:php_uname('s')}</td></tr>
+<tr><td>PHP版本</td><td>{:PHP_VERSION}</td></tr>
+<tr><td>Zend版本</td><td>{:Zend_Version()}</td></tr>
+<tr><td>服务器解译引擎</td><td>{:$_SERVER['SERVER_SOFTWARE']}</td></tr>
+<tr><td>服务器语言</td><td>{:$_SERVER['HTTP_ACCEPT_LANGUAGE']}</td></tr>
+<tr><td>服务器Web端口</td><td>{:$_SERVER['SERVER_PORT']}</td></tr>
+</table>
+<blockquote style="padding: 10px;border-left: 5px solid #009688;" class="layui-elem-quote">开发团队：</blockquote>
+<table width="100%">
+<tr><td width="110px">版权所有</td><td>成都极酷科技有限公司</td></tr>
+<tr><td>感谢贡献者</td><td>Thinkphp，Layer，老张博客</td></tr>
+<tr><td>特别提醒您</td><td>本程序均可免费下载使用，但严禁删除、隐藏或更改版权信息，且导致的一切损失由使用者自行承担。</td></tr>
+</table>
+</div>
+{include file="index_footer"}
+</body>
+</html>

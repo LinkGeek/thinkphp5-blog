@@ -1,0 +1,122 @@
+{include file="index/header"}
+<body>
+<div class="fly-panel fly-panel-user">
+<div class="tpt—admin">
+
+<fieldset class="layui-elem-field layui-field-title">
+<legend>积分管理</legend>
+</fieldset>
+
+<form class="layui-form">
+
+  <div class="layui-form-item">
+    <label class="layui-form-label">注册积分</label>
+    <div class="layui-input-block">
+	  <input type="text" name="REG_POINT" value="{:config('point.REG_POINT')}" placeholder="请输入内容" autocomplete="off" class="layui-input">
+    </div>
+  </div>
+
+  <div class="layui-form-item">
+    <label class="layui-form-label">登录积分</label>
+    <div class="layui-input-block">
+	  <input type="text" name="LOGIN_POINT" value="{:config('point.LOGIN_POINT')}" placeholder="请输入内容" autocomplete="off" class="layui-input">
+    </div>
+  </div>
+
+  <div class="layui-form-item">
+    <label class="layui-form-label">发帖积分</label>
+    <div class="layui-input-block">
+	  <input type="text" name="ADD_POINT" value="{:config('point.ADD_POINT')}" placeholder="请输入内容" autocomplete="off" class="layui-input">
+    </div>
+  </div>
+
+  <div class="layui-form-item">
+    <label class="layui-form-label">回复积分</label>
+    <div class="layui-input-block">
+	  <input type="text" name="EDIT_POINT" value="{:config('point.EDIT_POINT')}" placeholder="请输入内容" autocomplete="off" class="layui-input">
+    </div>
+  </div>
+
+
+  <div class="layui-form-item">
+    <label class="layui-form-label">大于等于</label>
+    <div class="layui-input-block">
+	  <input type="text" name="GRADE_AVIP" value="{:config('point.GRADE_AVIP')}" placeholder="请输入内容" autocomplete="off" class="layui-input" style="width: 150px;float: left;">
+	  <span style="float: left;line-height: 38px;margin: 0 20px;">小于</span>
+	  <input type="text" name="GRADE_BVIP" value="{:config('point.GRADE_BVIP')}" placeholder="请输入内容" autocomplete="off" class="layui-input" style="width: 150px;float: left;">
+	  <span style="float: left;line-height: 38px;margin: 0 20px;">等级</span>
+	  <input type="text" name="GRADE_CVIP" value="{:config('point.GRADE_CVIP')}" placeholder="请输入内容" autocomplete="off" class="layui-input" style="width: 200px;float: left;">
+    </div>
+  </div>
+
+  <div class="layui-form-item">
+   <label class="layui-form-label">大于等于</label>
+    <div class="layui-input-block">
+	  <input type="text" name="GRADE_DVIP" value="{:config('point.GRADE_DVIP')}" placeholder="请输入内容" autocomplete="off" class="layui-input" style="width: 150px;float: left;">
+	  <span style="float: left;line-height: 38px;margin: 0 20px;">小于</span>
+	  <input type="text" name="GRADE_EVIP" value="{:config('point.GRADE_EVIP')}" placeholder="请输入内容" autocomplete="off" class="layui-input" style="width: 150px;float: left;">
+	  <span style="float: left;line-height: 38px;margin: 0 20px;">等级</span>
+	  <input type="text" name="GRADE_FVIP" value="{:config('point.GRADE_FVIP')}" placeholder="请输入内容" autocomplete="off" class="layui-input" style="width: 200px;float: left;">
+    </div>
+  </div>
+
+  <div class="layui-form-item">
+   <label class="layui-form-label">大于等于</label>
+    <div class="layui-input-block">
+	  <input type="text" name="GRADE_GVIP" value="{:config('point.GRADE_GVIP')}" placeholder="请输入内容" autocomplete="off" class="layui-input" style="width: 150px;float: left;">
+	  <span style="float: left;line-height: 38px;margin: 0 20px;">小于</span>
+	  <input type="text" name="GRADE_HVIP" value="{:config('point.GRADE_HVIP')}" placeholder="请输入内容" autocomplete="off" class="layui-input" style="width: 150px;float: left;">
+	  <span style="float: left;line-height: 38px;margin: 0 20px;">等级</span>
+	  <input type="text" name="GRADE_IVIP" value="{:config('point.GRADE_IVIP')}" placeholder="请输入内容" autocomplete="off" class="layui-input" style="width: 200px;float: left;">
+    </div>
+  </div>
+
+  <div class="layui-form-item">
+   <label class="layui-form-label">大于等于</label>
+    <div class="layui-input-block">
+	  <input type="text" name="GRADE_JVIP" value="{:config('point.GRADE_JVIP')}" placeholder="请输入内容" autocomplete="off" class="layui-input" style="width: 150px;float: left;">
+	  <span style="float: left;line-height: 38px;margin: 0 20px;">等级</span>
+	  <input type="text" name="GRADE_KVIP" value="{:config('point.GRADE_KVIP')}" placeholder="请输入内容" autocomplete="off" class="layui-input" style="width: 418px;float: left;">
+    </div>
+  </div>
+
+
+  <div class="layui-form-item">
+    <div class="layui-input-block">
+	  <button class="layui-btn" lay-submit="" lay-filter="point_add">立即提交</button>
+    </div>
+  </div>
+
+
+</form>
+</div>
+</div>
+<script>
+layui.use('form',function(){
+  var form = layui.form()
+  ,jq = layui.jquery;
+  
+  form.on('submit(point_add)', function(data){
+    loading = layer.load(2, {
+      shade: [0.2,'#000']
+    });
+    var param = data.field;
+    jq.post('{:url("point/add")}',param,function(data){
+      if(data.code == 200){
+        layer.close(loading);
+        layer.msg(data.msg, {icon: 1, time: 1000}, function(){
+          location.href = '{:url("point/index")}';
+        });
+      }else{
+        layer.close(loading);
+        layer.msg(data.msg, {icon: 2, anim: 6, time: 1000});
+      }
+    });
+    return false;
+  });
+
+})
+</script>
+{include file="index_footer"}
+</body>
+</html>

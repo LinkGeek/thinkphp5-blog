@@ -1,0 +1,54 @@
+.blog-zan {width: 450px;height: 400px;}
+.blog-zan h2 {font-size: 16px;font-weight: 100;color: #999;text-align: center;padding: 30px 0;}
+.blog-zan h3 {font-size: 12px;font-weight: 100;color: #999;text-align: center;padding: 20px 0 0 0;}
+.blog-zan .layui-tab-item {width: 140px;padding: 10px;border: 6px solid #EA5F00;margin: 0 auto;border-radius: 3px;height: 140px;}
+.blog-zan .layui-tab-content {padding: 0 0 10px 0;text-align: center;}
+.blog-zan .layui-tab-content p {font-size: 12px;font-weight: 100;color: #999;line-height: 38px;}
+.blog-zan .layui-tab {margin: 0;text-align: none!important;}
+.blog-zan .layui-tab-title li {line-height: 40px;min-width: 100px;padding:0;}
+.blog-zan .layui-tab-title {border-bottom: 0px solid #ffffff;text-align: center;}
+.blog-zan .layui-tab-title .layui-this:after {border: 0px solid #fff;}
+.blog-zan .layui-tab-title .layui-this {}
+.blog-zan .layui-tab-title .layui-this .zanbox {background: url(../img/radio1.jpg);}
+.blog-zan .zanbox {width: 16px;height: 16px;background: url(../img/radio2.jpg);display: block;float: left;margin: 13px 15px 0 15px;}
+.blog-search{border-top:4px solid #4fc277}
+.blog-search form{position:relative;margin:20px 20px 0 20px;padding:0 10px;background:#fff}
+.blog-search input{height:40px;line-height:40px;border:0 solid #fff;background:#fff;font-size:12px;display:block;width:100%;color:#666}
+.blog-search button{cursor:pointer;position:absolute;right:10px;top:12px;border:0 solid #fff;color:#B5B5B5;background:#fff}
+.blog-sidebar{background:#fafafa;margin:0 0 20px 0;padding-top:25px}
+.blog-sidebar h3{font-size:20px;font-weight:400;padding:0 0 0 25px;border-left:4px solid #f63756;line-height:22px}
+.blog-c li{float:left;line-height:30px;padding:20px 30px;border-bottom:1px solid #f0f0f0}
+.blog-c li a{font-size:1pc;color:#333}
+.blog-c li a:hover{color:red}
+.blog-c li p{font-size:1pc;color:#999;margin-top:10px}
+.blog-c li:last-child{border:none}
+.blog-d li{padding:20px 30px;border-bottom:1px solid #f0f0f0}
+.blog-d li div{height:155px;overflow:hidden;margin-bottom:10px}
+.blog-d li p a{font-size:1pc;color:#444;font-weight:400;line-height:30px}
+.blog-d li p a:hover{color:red}
+.blog-d li img{width:100%;height:155px;-webkit-transition:all .6s}
+.blog-d li:hover img{transform:scale(1.1,1.1)}
+.blog-d li:last-child{border:none}
+.blog-e{margin:20px 0 0 30px}
+.blog-e li a{float:left;line-height:35px;font-size:1pc;height:35px;border:1px solid #f0f0f0;margin:0 20px 20px 0;padding:0 15px;color:#f1754f}
+.blog-e li a:hover{background:#f1754f;border-color:#f97752;color:#fff}
+.blog-f{padding:25px 10px 10px 30px}
+.blog-f a{float:left;display:inline-block;height:26px;line-height:26px;padding:0 12px;margin:0 15px 15px 0;border:1px solid #E3E3E3;border-radius:28px;color:#666;font-size:12px;transition:.5s ease 0s}
+.blog-f a:hover{color:#FA0807;border:1px solid #FA0807}
+.blog-home{position:relative;padding:10px 10px 40px 0px;text-align:center}
+.blog-home img{width:120px;height:120px;border-radius:100%}
+.blog-home h1{font-size:26px;line-height:30px;margin-top:10px}
+.blog-home h1 .icon-nan{font-size:22px;color:#4EBBF9}
+.blog-home h1 .icon-nv{font-size:22px;color:#F581B1}
+.blog-home-sign{color:#999;margin-top:10px}
+.blog-home-info{color:#999;margin-top:10px}
+.blog-home-info i{padding-right:5px;padding-left:10px;color:#666}
+.blog-stat{background:#fafafa;margin-bottom:20px;padding:0 0 25px 0}
+.blog-stat-list{width:100%;border-bottom:1px solid #f1f1f1;padding:20px 0}
+.blog-stat-list li{float:left;text-align:center;width:33%;height:70px}
+.blog-stat-list li a{width:100%;font-size:16px}
+.blog-stat-list span{width:100%;display:inline-block;margin:10px 0 5px 0;font-size:22px}
+.blog-grid-org{text-align:center}
+.blog-grid-org h2{font-size:22px;color:#1499f8;margin:26px 0}
+.blog-grid-org .tougao{border: 1px solid #5FB878;background-color: #5FB878;color: #FFF;padding: 0 28px;}
+.blog-grid-org .zanzhu{border: 1px solid #FF5722;background-color: #FF5722;color: #FFF;padding: 0 28px;}

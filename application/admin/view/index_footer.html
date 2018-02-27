@@ -1,0 +1,29 @@
+<div class="footer">
+  <p class="bq">
+  <a style="position: absolute;color: #FFF;display: none;" class="banquan" target="_blank" href="https://www.templet360.com/">Templet360</a>
+  </p>
+</div>
+<script>
+layui.use(['layer','jquery'], function(){
+  var layer = layui.layer
+  ,jq = layui.jquery;
+
+  jq('.logi_logout').click(function(){
+    loading = layer.load(2, {
+      shade: [0.2,'#000']
+    });
+    jq.getJSON('{:url("login/logout")}',function(data){
+      if(data.code == 200){
+        layer.close(loading);
+        layer.msg(data.msg, {icon: 1, time: 1000}, function(){
+          location.reload();
+        });
+      }else{
+        layer.close(loading);
+        layer.msg(data.msg, {icon: 2, anim: 6, time: 1000});
+      }
+    });
+  });
+
+})
+</script>

@@ -1,0 +1,142 @@
+{include file="index/header"}
+<body>
+<div class="fly-panel fly-panel-user">
+<div class="tpt—admin">
+
+<div class="layui-tab">
+  <ul class="layui-tab-title" style="margin-bottom: 10px;">
+    <li class="layui-this">会员资料</li>
+    <li>会员密码</li>
+  </ul>
+  <div class="layui-tab-content">
+    <div class="layui-tab-item layui-show">
+<form class="layui-form">
+  <input type="hidden" name="userid" value="{$tptc.userid}">
+  
+  <div class="layui-form-item">
+    <label class="layui-form-label">名称</label>
+    <div class="layui-input-block">
+      <input type="text" name="username" value="{$tptc.username}" required lay-verify="required" placeholder="请输入内容" autocomplete="off" class="layui-input">
+    </div>
+  </div>
+
+  <div class="layui-form-item">
+    <label class="layui-form-label">邮箱</label>
+    <div class="layui-input-block">
+	  <input type="text" name="usermail" value="{$tptc.usermail}" required lay-verify="required" placeholder="请输入内容" autocomplete="off" class="layui-input">
+    </div>
+  </div>
+
+  <div class="layui-form-item">
+    <label class="layui-form-label">积分</label>
+    <div class="layui-input-block">
+	  <input type="text" name="point" value="{$tptc.point}" placeholder="请输入内容" autocomplete="off" class="layui-input">
+    </div>
+  </div>
+
+  <div class="layui-form-item">
+    <div class="layui-input-block">
+	  <button class="layui-btn" lay-submit="" lay-filter="member_edit">立即提交</button>
+      <button class="layui-btn layui-btn-primary" onclick="history.go(-1)">返回</button>
+    </div>
+  </div>
+   </form>
+	</div>
+    <div class="layui-tab-item">
+   <form class="layui-form">
+  <input type="hidden" name="userid" value="{$tptc.userid}">
+  <div class="layui-form-item">
+    <label class="layui-form-label">密码</label>
+    <div class="layui-input-block">
+	  <input type="password" name="password" required lay-verify="required" placeholder="请输入内容" autocomplete="off" class="layui-input">
+    </div>
+  </div>
+ {if condition="$tptc['grades'] eq 1"}
+  <div class="layui-form-item">
+    <label class="layui-form-label">口令</label>
+    <div class="layui-input-block">
+	  <input type="text" name="kouling" required lay-verify="required" placeholder="请输入内容" autocomplete="off" class="layui-input">
+    </div>
+  </div>
+ {/if}
+  <div class="layui-form-item">
+    <div class="layui-input-block">
+	  <button class="layui-btn" lay-submit="" lay-filter="member_edits">立即提交</button>
+      <button class="layui-btn layui-btn-primary" onclick="history.go(-1)">返回</button>
+    </div>
+  </div>
+   </form>
+	</div>
+  </div>
+</div>
+   
+
+</div>
+</div>
+<script>
+layui.use(['form', 'upload', 'element'],function(){
+  var form = layui.form()
+  ,element = layui.element()
+  ,jq = layui.jquery;
+  
+  //图片
+  layui.upload({
+    url: '{:url("upload/upimage")}'
+    ,elem:'#image'
+    ,before: function(input){
+      loading = layer.load(2, {
+        shade: [0.2,'#000'] //0.2透明度的白色背景
+      });
+    }
+    ,success: function(res){
+      layer.close(loading);
+      jq('input[name=pic]').val(res.path);
+      layer.msg(res.msg, {icon: 1, time: 1000});
+    }
+  });
+
+  //提交
+  form.on('submit(member_edit)', function(data){
+    loading = layer.load(2, {
+      shade: [0.2,'#000']
+    });
+    var param = data.field;
+    jq.post('{:url("member/edit")}',param,function(data){
+      if(data.code == 200){
+        layer.close(loading);
+        layer.msg(data.msg, {icon: 1, time: 1000}, function(){
+          location.href = '{:url("member/index")}';
+        });
+      }else{
+        layer.close(loading);
+        layer.msg(data.msg, {icon: 2, anim: 6, time: 1000});
+      }
+    });
+    return false;
+  });
+
+  //提交
+  form.on('submit(member_edits)', function(data){
+    loading = layer.load(2, {
+      shade: [0.2,'#000']
+    });
+    var param = data.field;
+    jq.post('{:url("member/edits")}',param,function(data){
+      if(data.code == 200){
+        layer.close(loading);
+        layer.msg(data.msg, {icon: 1, time: 1000}, function(){
+          location.href = '{:url("member/index")}';
+        });
+      }else{
+        layer.close(loading);
+        layer.msg(data.msg, {icon: 2, anim: 6, time: 1000});
+      }
+    });
+    return false;
+  });
+
+})
+</script>
+{include file="index_footer"}
+</body>
+</html>

@@ -1,0 +1,130 @@
+---------------------------------------------------------------
+[ 2017-12-10T19:14:34+08:00 ] 10.135.172.73 14.153.78.128 GET /
+[ info ] ui.tronron.com/ [运行时间：0.114865s][吞吐率：8.71req/s] [内存消耗：2,907.23kb] [文件加载：61]
+[ info ] [ LANG ] C:\phpStudy\PHPTutorial\WWW\blog\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => '',
+    1 => NULL,
+    2 => NULL,
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => 'ui.tronron.com',
+  'connection' => 'keep-alive',
+  'cache-control' => 'max-age=0',
+  'upgrade-insecure-requests' => '1',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 6.1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/55.0.2883.87 Safari/537.36',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8',
+  'accept-encoding' => 'gzip, deflate, sdch',
+  'accept-language' => 'zh-CN,zh;q=0.8',
+  'cookie' => '__guid=7207222.1356510008289356500.1512837142404.4656; PHPSESSID=t2fqs1n3aqeefgcf4rikrlcun6; monitor_count=28',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ SESSION ] INIT array (
+  'id' => '',
+  'var_session_id' => '',
+  'prefix' => 'think',
+  'type' => '',
+  'auto_start' => true,
+)
+[ info ] [ RUN ] app\index\controller\Index->index[ C:\phpStudy\PHPTutorial\WWW\blog\application\index\controller\Index.php ]
+[ info ] [ VIEW ] ./template/default/index_index.html [ array (
+  0 => 'tptm',
+  1 => 'tptl',
+  2 => 'tpte',
+  3 => 'tptf',
+  4 => 'tpto',
+  5 => 'tptop',
+  6 => 'tptops',
+  7 => 'tptuser',
+  8 => 'tptc',
+  9 => 'tptcs',
+) ]
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.001045s ] mysql:host=127.0.0.1;port=3306;dbname=tpt-blog;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `tpt_member` [ RunTime:0.003262s ]
+[ sql ] [ SQL ] SELECT * FROM `tpt_member` ORDER BY userid desc LIMIT 12 [ RunTime:0.000707s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `tpt_links` [ RunTime:0.004238s ]
+[ sql ] [ SQL ] SELECT * FROM `tpt_links` WHERE  `show` = 1 ORDER BY id desc [ RunTime:0.000531s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `tpt_forum` [ RunTime:0.004150s ]
+[ sql ] [ SQL ] SELECT * FROM `tpt_forum` WHERE  `open` = 1  AND `choice` = 1 ORDER BY id desc LIMIT 9 [ RunTime:0.000511s ]
+[ sql ] [ SQL ] SELECT * FROM `tpt_forum` WHERE  `open` = 1 ORDER BY view desc LIMIT 9 [ RunTime:0.000495s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `tpt_category` [ RunTime:0.003142s ]
+[ sql ] [ SQL ] SELECT * FROM `tpt_category` WHERE  `show` = 1 ORDER BY sort desc LIMIT 12 [ RunTime:0.000524s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `tpt_navtop` [ RunTime:0.003108s ]
+[ sql ] [ SQL ] SELECT * FROM `tpt_navtop` WHERE  (  tid = 0 ) ORDER BY sort ASC [ RunTime:0.000416s ]
+[ sql ] [ SQL ] SELECT * FROM `tpt_navtop` WHERE  (  tid != 0 ) ORDER BY sort ASC [ RunTime:0.000366s ]
+[ sql ] [ SQL ] SELECT * FROM `tpt_member` WHERE  `userid` IS NULL LIMIT 1 [ RunTime:0.000283s ]
+[ sql ] [ SQL ] SELECT `f`.*,c.id as cid,`m`.`userid`,`m`.`userhead`,`m`.`username`,`c`.`name` FROM `tpt_forum` `f` INNER JOIN `tpt_category` `c` ON `c`.`id`=`f`.`tid` INNER JOIN `tpt_member` `m` ON `m`.`userid`=`f`.`uid` WHERE  `open` = 1  AND `settop` = 1 ORDER BY f.id desc LIMIT 5 [ RunTime:0.000483s ]
+[ sql ] [ SQL ] SELECT COUNT(*) AS tp_count FROM `tpt_forum` `f` INNER JOIN `tpt_category` `c` ON `c`.`id`=`f`.`tid` INNER JOIN `tpt_member` `m` ON `m`.`userid`=`f`.`uid` WHERE  `open` = 1 LIMIT 1 [ RunTime:0.000369s ]
+[ sql ] [ SQL ] SELECT `f`.*,c.id as cid,`m`.`userid`,`m`.`userhead`,`m`.`username`,`c`.`name` FROM `tpt_forum` `f` INNER JOIN `tpt_category` `c` ON `c`.`id`=`f`.`tid` INNER JOIN `tpt_member` `m` ON `m`.`userid`=`f`.`uid` WHERE  `open` = 1 ORDER BY f.id desc LIMIT 0,15 [ RunTime:0.000455s ]
+---------------------------------------------------------------
+[ 2017-12-10T21:18:21+08:00 ] 10.135.172.73 14.153.78.128 GET /
+[ info ] ui.tronron.com/ [运行时间：0.914429s][吞吐率：1.09req/s] [内存消耗：2,739.31kb] [文件加载：59]
+[ info ] [ LANG ] C:\phpStudy\PHPTutorial\WWW\blog\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => '',
+    1 => NULL,
+    2 => NULL,
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => 'ui.tronron.com',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 6.1; rv:57.0) Gecko/20100101 Firefox/57.0',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8',
+  'accept-language' => 'zh-CN,zh;q=0.8,zh-TW;q=0.7,zh-HK;q=0.5,en-US;q=0.3,en;q=0.2',
+  'accept-encoding' => 'gzip, deflate',
+  'connection' => 'keep-alive',
+  'upgrade-insecure-requests' => '1',
+  'pragma' => 'no-cache',
+  'cache-control' => 'no-cache',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ SESSION ] INIT array (
+  'id' => '',
+  'var_session_id' => '',
+  'prefix' => 'think',
+  'type' => '',
+  'auto_start' => true,
+)
+[ info ] [ RUN ] app\index\controller\Index->index[ C:\phpStudy\PHPTutorial\WWW\blog\application\index\controller\Index.php ]
+[ info ] [ VIEW ] ./template/default/index_index.html [ array (
+  0 => 'tptm',
+  1 => 'tptl',
+  2 => 'tpte',
+  3 => 'tptf',
+  4 => 'tpto',
+  5 => 'tptop',
+  6 => 'tptops',
+  7 => 'tptuser',
+  8 => 'tptc',
+  9 => 'tptcs',
+) ]
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.005486s ] mysql:host=127.0.0.1;port=3306;dbname=tpt-blog;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `tpt_member` [ RunTime:0.008384s ]
+[ sql ] [ SQL ] SELECT * FROM `tpt_member` ORDER BY userid desc LIMIT 12 [ RunTime:0.000487s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `tpt_links` [ RunTime:0.002675s ]
+[ sql ] [ SQL ] SELECT * FROM `tpt_links` WHERE  `show` = 1 ORDER BY id desc [ RunTime:0.000339s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `tpt_forum` [ RunTime:0.002621s ]
+[ sql ] [ SQL ] SELECT * FROM `tpt_forum` WHERE  `open` = 1  AND `choice` = 1 ORDER BY id desc LIMIT 9 [ RunTime:0.000406s ]
+[ sql ] [ SQL ] SELECT * FROM `tpt_forum` WHERE  `open` = 1 ORDER BY view desc LIMIT 9 [ RunTime:0.000335s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `tpt_category` [ RunTime:0.002640s ]
+[ sql ] [ SQL ] SELECT * FROM `tpt_category` WHERE  `show` = 1 ORDER BY sort desc LIMIT 12 [ RunTime:0.000424s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `tpt_navtop` [ RunTime:0.002735s ]
+[ sql ] [ SQL ] SELECT * FROM `tpt_navtop` WHERE  (  tid = 0 ) ORDER BY sort ASC [ RunTime:0.000299s ]
+[ sql ] [ SQL ] SELECT * FROM `tpt_navtop` WHERE  (  tid != 0 ) ORDER BY sort ASC [ RunTime:0.000289s ]
+[ sql ] [ SQL ] SELECT * FROM `tpt_member` WHERE  `userid` IS NULL LIMIT 1 [ RunTime:0.000393s ]
+[ sql ] [ SQL ] SELECT `f`.*,c.id as cid,`m`.`userid`,`m`.`userhead`,`m`.`username`,`c`.`name` FROM `tpt_forum` `f` INNER JOIN `tpt_category` `c` ON `c`.`id`=`f`.`tid` INNER JOIN `tpt_member` `m` ON `m`.`userid`=`f`.`uid` WHERE  `open` = 1  AND `settop` = 1 ORDER BY f.id desc LIMIT 5 [ RunTime:0.000477s ]
+[ sql ] [ SQL ] SELECT COUNT(*) AS tp_count FROM `tpt_forum` `f` INNER JOIN `tpt_category` `c` ON `c`.`id`=`f`.`tid` INNER JOIN `tpt_member` `m` ON `m`.`userid`=`f`.`uid` WHERE  `open` = 1 LIMIT 1 [ RunTime:0.000767s ]
+[ sql ] [ SQL ] SELECT `f`.*,c.id as cid,`m`.`userid`,`m`.`userhead`,`m`.`username`,`c`.`name` FROM `tpt_forum` `f` INNER JOIN `tpt_category` `c` ON `c`.`id`=`f`.`tid` INNER JOIN `tpt_member` `m` ON `m`.`userid`=`f`.`uid` WHERE  `open` = 1 ORDER BY f.id desc LIMIT 0,15 [ RunTime:0.000548s ]

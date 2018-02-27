@@ -1,0 +1,202 @@
+{include file="index/header"}
+<body>
+<style type="text/css">
+.layui-form-checkbox {height: 22px;line-height: 20px;margin-right: 0px;padding-right: 20px;}
+.layui-form-checkbox i {right: 3px;width: 20px;font-size: 16px;top: 2px;}
+</style>
+<div class="fly-panel fly-panel-user">
+<div class="tpt—admin">
+<div class="tpt—btn" style="float: left;margin: 0 20px 0 0">
+<a target="_blank" href="__INDEX__/add.html"><i class="layui-icon">&#xe608;</i> 添加帖子</a>
+</div>
+
+<div style="float: left;">
+<form class="layui-form" action="" method="get">
+<input placeholder="输入关键字" name="ks" value="<?php echo input('ks');?>" type="text" class="layui-input" style="float: left;margin-right: 10px;width: 240px;">
+<button class="layui-btn" style="float: left;" value="查询" type="submit">查询</button>
+</form>
+</div>
+
+<form class="layui-form" enctype="multipart/form-data" method="post">
+<table width="100%">
+      <tr>
+	    <th width="5%" align="center"><input type="checkbox" name="checkAll" lay-filter="checkAll"></th>
+		<th width="5%" align="center">帖子ID</th>
+        <th width="30%" align="center">帖子标题</th>
+		<th width="10%" align="center">是否显示</th>
+		<th width="10%" align="center">是否顶置</th>
+		<th width="10%" align="center">是否精选</th>
+		<th width="10%" align="center">所属栏目</th>
+		<th width="10%" align="center">添加时间</th>
+        <th width="10%" align="center">基本操作</th>
+      </tr>
+      {volist name="tptc" id="vo"}
+	  <tr>
+	    <td align="center"><input type="checkbox" name="ids[{$vo.id}]" lay-filter="checkOne" value="{$vo.id}"></td>
+		<td align="center">{$vo.id}</td>
+        <td style="padding-left: 20px;"><a target="_blank" href="__INDEX__/thread/{$vo.id}.html">{$vo.title}</a></td>
+		<td align="center">
+		<a change="{$vo.id}" onclick="changeopen(this);" {if condition="$vo['open'] eq 1"}class="layui-unselect layui-form-switch layui-form-onswitch"{else /}class="layui-unselect layui-form-switch"{/if}>
+		<em>显示</em><i></i>
+		</a>
+		</td>
+		<td align="center">
+		<a change="{$vo.id}" onclick="changesettop(this);" {if condition="$vo['settop'] eq 1"}class="layui-unselect layui-form-switch layui-form-onswitch"{else /}class="layui-unselect layui-form-switch"{/if}>
+		<em>顶置</em><i></i>
+		</a>
+		</td>
+		<td align="center">
+		<a change="{$vo.id}" onclick="changechoice(this);" {if condition="$vo['choice'] eq 1"}class="layui-unselect layui-form-switch layui-form-onswitch"{else /}class="layui-unselect layui-form-switch"{/if}>
+		<em>精选</em><i></i>
+		</a>
+		</td>
+		<td align="center"><a target="_blank" href="__INDEX__/view/{$vo.cid}.html">{$vo.name}</a></td>
+		<td align="center">{$vo.time|date="Y-m-d",###}</td>
+        <td align="center"><a class="layui-btn layui-btn-mini layui-btn-warm" href="{:url('forum/edit',array('id'=>$vo['id']))}">修改</a> <a class="layui-btn layui-btn-mini layui-btn-danger del_btn" member-id="{$vo.id}" title="删除" nickname="{$vo.title}">删除</a>
+        </td>
+      </tr>
+      {/volist}
+</table>
+<div class="layui-form-item">
+<div style="margin-top: 20px;float: left;">
+<button class="layui-btn" lay-submit lay-filter="delete">删除选中</button>
+</div>
+<div class="pages" style="float: right;">{$tptc->render()}</div>
+</div>
+</form>
+<script>
+function changechoice(o){
+  var change=$(o).attr("change");
+  $.ajax({
+	  type:"post",
+	  dataType:"json",
+      data:{change:change},
+	  url:"{:url('forum/changechoice')}",
+	  success:function(data){
+		  if(data == 1){
+			  $(o).attr("class","layui-unselect layui-form-switch");
+	      }else{
+			  $(o).attr("class","layui-unselect layui-form-switch layui-form-onswitch");
+	      }
+	  }
+  });
+}
+function changesettop(o){
+  var change=$(o).attr("change");
+  $.ajax({
+	  type:"post",
+	  dataType:"json",
+      data:{change:change},
+	  url:"{:url('forum/changesettop')}",
+	  success:function(data){
+		  if(data == 1){
+			  $(o).attr("class","layui-unselect layui-form-switch");
+	      }else{
+			  $(o).attr("class","layui-unselect layui-form-switch layui-form-onswitch");
+	      }
+	  }
+  });
+}
+function changeopen(o){
+  var change=$(o).attr("change");
+  $.ajax({
+	  type:"post",
+	  dataType:"json",
+      data:{change:change},
+	  url:"{:url('forum/changeopen')}",
+	  success:function(data){
+		  if(data == 1){
+			  $(o).attr("class","layui-unselect layui-form-switch");
+	      }else{
+			  $(o).attr("class","layui-unselect layui-form-switch layui-form-onswitch");
+	      }
+	  }
+  });
+}
+</script>
+<script>
+layui.use('form',function(){
+  var form = layui.form()
+  ,jq = layui.jquery;
+
+  jq('.del_btn').click(function(){
+    var name = jq(this).attr('nickname');
+    var id = jq(this).attr('member-id');
+    layer.confirm('确定删除【'+name+'】?', function(index){
+      loading = layer.load(2, {
+        shade: [0.2,'#000']
+      });
+      jq.post('{:url("forum/dels")}',{'id':id},function(data){
+        if(data.code == 200){
+          layer.close(loading);
+          layer.msg(data.msg, {icon: 1, time: 1000}, function(){
+            location.reload();
+          });
+        }else{
+          layer.close(loading);
+          layer.msg(data.msg, {icon: 2, anim: 6, time: 1000});
+        }
+      });
+    });   
+  });
+  
+  form.on('checkbox(checkAll)', function(data){
+    if(data.elem.checked){
+      jq("input[type='checkbox']").prop('checked',true);
+    }else{
+      jq("input[type='checkbox']").prop('checked',false);
+    }
+    form.render('checkbox');
+  });  
+
+  form.on('checkbox(checkOne)', function(data){
+    var is_check = true;
+    if(data.elem.checked){
+      jq("input[lay-filter='checkOne']").each(function(){
+        if(!jq(this).prop('checked')){ is_check = false; }
+      });
+      if(is_check){
+        jq("input[lay-filter='checkAll']").prop('checked',true);
+      }
+    }else{
+      jq("input[lay-filter='checkAll']").prop('checked',false);
+    } 
+    form.render('checkbox');
+  });
+
+  form.on('submit(delete)', function(data){
+    var is_check = false;
+    jq("input[lay-filter='checkOne']").each(function(){
+      if(jq(this).prop('checked')){ is_check = true; }
+    });
+    if(!is_check){
+      layer.msg('请选择数据', {icon: 2,anim: 6,time: 1000});
+      return false;
+    }
+    layer.confirm('确定批量删除?', function(index){
+      loading = layer.load(2, {
+        shade: [0.2,'#000']
+      });
+      var param = data.field;
+      jq.post('{:url("forum/delss")}',param,function(data){
+        if(data.code == 200){
+          layer.close(loading);
+          layer.msg(data.msg, {icon: 1, time: 1000}, function(){
+            location.reload();
+          });
+        }else{
+          layer.close(loading);
+          layer.msg(data.msg, {icon: 2,anim: 6, time: 1000});
+        }
+      });
+    });
+    return false;
+  });
+
+})
+</script>
+</div>
+</div>
+{include file="index_footer"}
+</body>
+</html>

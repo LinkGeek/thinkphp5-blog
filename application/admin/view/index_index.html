@@ -1,0 +1,120 @@
+{include file="index/header"}
+<body>
+<style type="text/css">
+.layui-nav-tree .layui-this{background-color: #393D49;color: #fff;}
+</style>
+<div class="header">
+  <div class="main">
+    <a class="logo" href="{:url('index/index')}" title="Templet360后台管理系统">Templet360后台管理系统</a>
+    <div class="nav-user">
+      <a class="avatar">
+        <img src="__ROOT__{$Think.session.userhead}">
+        <cite>{$Think.session.username}</cite>
+        <i>管理员</i>
+      </a>
+      <div class="nav">
+        <a target="_blank" href="__INDEX__"><i class="layui-icon" style="top: 3px; font-size: 24px;padding-right: 8px;">&#xe609;</i>网站首页</a>
+        <a class="logi_logout" href="javascript:void(0)"><i class="layui-icon" style="top: 4px;font-size: 24px;padding-right: 8px;">&#x1006;</i>退出</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="main fly-user-main layui-clear">
+<ul class="layui-nav layui-nav-tree left_menu_ul">
+
+	<li class="layui-nav-item layui-nav-itemed">
+    <a href="javascript:;">内容管理</a>
+    <dl class="layui-nav-child">
+	  <dd><a href="{:url('navtop/index')}" target="main"><i class="layui-icon">&#xe609;</i>导航管理</a></dd>
+      <dd><a href="{:url('category/index')}" target="main"><i class="layui-icon">&#xe61f;</i>板块管理</a></dd>
+      <dd><a href="{:url('forum/index')}" target="main"><i class="layui-icon">&#xe63c;</i>帖子管理</a></dd>
+	  <dd><a href="{:url('comment/index')}" target="main"><i class="layui-icon">&#xe63a;</i>评论管理</a></dd>
+    </dl>
+    </li>
+
+	<li class="layui-nav-item layui-nav-itemed">
+    <a href="javascript:;">综合管理</a>
+    <dl class="layui-nav-child">
+	  <dd><a href="{:url('member/index')}" target="main"><i class="layui-icon">&#xe612;</i>会员管理</a></dd>
+	  <dd><a href="{:url('point/index')}" target="main"><i class="layui-icon">&#xe641;</i>积分管理</a></dd>
+      <dd><a href="{:url('banner/index')}" target="main"><i class="layui-icon">&#xe60d;</i>图片管理</a></dd>
+	  <dd><a href="{:url('links/index')}" target="main"><i class="layui-icon">&#xe64e;</i>友情连接</a></dd>
+    </dl>
+    </li>
+	
+	<li class="layui-nav-item layui-nav-itemed">
+    <a href="javascript:;">系统管理</a>
+    <dl class="layui-nav-child">
+      <dd><a href="{:url('config/index')}" target="main"><i class="layui-icon">&#xe62c;</i>网站配置</a></dd>
+	  <dd><a class="update_cache" href="javascript:void(0)"><i class="layui-icon">&#xe640;</i>清理缓存</a></dd>
+    </dl>
+    </li>
+
+	<li class="layui-nav-item layui-nav-itemed">
+    <a href="javascript:;">应用中心</a>
+    <dl class="layui-nav-child">
+      <dd><a href="https://www.templet360.com/zhuti.html" target="_blank"><i class="layui-icon">&#xe61b;</i>主题模板</a></dd>
+	  <dd><a href="https://www.templet360.com/forum.html" target="_blank"><i class="layui-icon">&#xe600;</i>帮助说明</a></dd>
+    </dl>
+    </li>
+</ul>
+</div>
+
+<div class="layui-body iframe-container">
+<iframe class="admin-iframe" id="admin-iframe" name="main" src="{:url('index/home')}"></iframe>
+</div>
+<script type="text/javascript">
+layui.use(['layer', 'element','jquery'], function(){
+  var layer = layui.layer
+  ,element = layui.element()
+  ,jq = layui.jquery;
+  
+  jq('.left_menu_ul .layui-nav-item').click(function(){
+    jq('.left_menu_ul .layui-nav-item').removeClass('layui-this');
+    jq(this).addClass('layui-this');
+    jq("#iframe-mask").show();
+    jq("#admin-iframe").load(function(){   
+      jq("#iframe-mask").fadeOut(100);
+    });
+  });
+
+  jq('.update_cache').click(function(){
+    loading = layer.load(2, {
+      shade: [0.2,'#000']
+    });
+    jq.getJSON('{:url("index/update")}',function(data){
+      if(data.code == 200){
+        layer.close(loading);
+        layer.msg(data.msg, {icon: 1, time: 1000}, function(){
+          location.reload();
+        });
+      }else{
+        layer.close(loading);
+        layer.msg(data.msg, {icon: 2, anim: 6, time: 1000});
+      }
+    });
+  });
+
+  jq('.logi_logout').click(function(){
+    loading = layer.load(2, {
+      shade: [0.2,'#000']
+    });
+    jq.getJSON('{:url("login/logout")}',function(data){
+      if(data.code == 200){
+        layer.close(loading);
+        layer.msg(data.msg, {icon: 1, time: 1000}, function(){
+          location.reload();
+        });
+      }else{
+        layer.close(loading);
+        layer.msg(data.msg, {icon: 2, anim: 6, time: 1000});
+      }
+    });
+  });
+
+});
+</script>
+{include file="index_footer"}
+</body>
+</html>

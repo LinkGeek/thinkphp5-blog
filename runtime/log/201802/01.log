@@ -1,0 +1,64 @@
+---------------------------------------------------------------
+[ 2018-02-01T16:46:24+08:00 ] ::1 ::1 GET /thinkphp5-blog/
+[ info ] localhost/thinkphp5-blog/ [运行时间：0.253015s][吞吐率：3.95req/s] [内存消耗：2,754.09kb] [文件加载：59]
+[ info ] [ LANG ] D:\AppServ\www\thinkphp5-blog\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => '',
+    1 => NULL,
+    2 => NULL,
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => 'localhost',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 6.1; Win64; x64; rv:58.0) Gecko/20100101 Firefox/58.0',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8',
+  'accept-language' => 'zh-CN,zh;q=0.8,zh-TW;q=0.7,zh-HK;q=0.5,en-US;q=0.3,en;q=0.2',
+  'accept-encoding' => 'gzip, deflate',
+  'cookie' => 'PHPSESSID=1cg0crq136rprhqlboi97785g6',
+  'connection' => 'keep-alive',
+  'upgrade-insecure-requests' => '1',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ SESSION ] INIT array (
+  'id' => '',
+  'var_session_id' => '',
+  'prefix' => 'think',
+  'type' => '',
+  'auto_start' => true,
+)
+[ info ] [ RUN ] app\index\controller\Index->index[ D:\AppServ\www\thinkphp5-blog\application\index\controller\Index.php ]
+[ info ] [ VIEW ] ./template/default/index_index.html [ array (
+  0 => 'tptm',
+  1 => 'tptl',
+  2 => 'tpte',
+  3 => 'tptf',
+  4 => 'tpto',
+  5 => 'tptop',
+  6 => 'tptops',
+  7 => 'tptuser',
+  8 => 'tptc',
+  9 => 'tptcs',
+) ]
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.021001s ] mysql:host=127.0.0.1;port=3306;dbname=tp5-blog;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `tpt_member` [ RunTime:0.043002s ]
+[ sql ] [ SQL ] SELECT * FROM `tpt_member` ORDER BY userid desc LIMIT 12 [ RunTime:0.006000s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `tpt_links` [ RunTime:0.008001s ]
+[ sql ] [ SQL ] SELECT * FROM `tpt_links` WHERE  `show` = 1 ORDER BY id desc [ RunTime:0.002000s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `tpt_forum` [ RunTime:0.017001s ]
+[ sql ] [ SQL ] SELECT * FROM `tpt_forum` WHERE  `open` = 1  AND `choice` = 1 ORDER BY id desc LIMIT 9 [ RunTime:0.002000s ]
+[ sql ] [ SQL ] SELECT * FROM `tpt_forum` WHERE  `open` = 1 ORDER BY view desc LIMIT 9 [ RunTime:0.001000s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `tpt_category` [ RunTime:0.008001s ]
+[ sql ] [ SQL ] SELECT * FROM `tpt_category` WHERE  `show` = 1 ORDER BY sort desc LIMIT 12 [ RunTime:0.000000s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `tpt_navtop` [ RunTime:0.009000s ]
+[ sql ] [ SQL ] SELECT * FROM `tpt_navtop` WHERE  (  tid = 0 ) ORDER BY sort ASC [ RunTime:0.001000s ]
+[ sql ] [ SQL ] SELECT * FROM `tpt_navtop` WHERE  (  tid != 0 ) ORDER BY sort ASC [ RunTime:0.001000s ]
+[ sql ] [ SQL ] SELECT * FROM `tpt_member` WHERE  `userid` IS NULL LIMIT 1 [ RunTime:0.001000s ]
+[ sql ] [ SQL ] SELECT `f`.*,c.id as cid,`m`.`userid`,`m`.`userhead`,`m`.`username`,`c`.`name` FROM `tpt_forum` `f` INNER JOIN `tpt_category` `c` ON `c`.`id`=`f`.`tid` INNER JOIN `tpt_member` `m` ON `m`.`userid`=`f`.`uid` WHERE  `open` = 1  AND `settop` = 1 ORDER BY f.id desc LIMIT 5 [ RunTime:0.004000s ]
+[ sql ] [ SQL ] SELECT COUNT(*) AS tp_count FROM `tpt_forum` `f` INNER JOIN `tpt_category` `c` ON `c`.`id`=`f`.`tid` INNER JOIN `tpt_member` `m` ON `m`.`userid`=`f`.`uid` WHERE  `open` = 1 LIMIT 1 [ RunTime:0.008001s ]
+[ sql ] [ SQL ] SELECT `f`.*,c.id as cid,`m`.`userid`,`m`.`userhead`,`m`.`username`,`c`.`name` FROM `tpt_forum` `f` INNER JOIN `tpt_category` `c` ON `c`.`id`=`f`.`tid` INNER JOIN `tpt_member` `m` ON `m`.`userid`=`f`.`uid` WHERE  `open` = 1 ORDER BY f.id desc LIMIT 0,15 [ RunTime:0.001000s ]

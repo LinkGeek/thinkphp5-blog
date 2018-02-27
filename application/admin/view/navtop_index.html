@@ -1,0 +1,111 @@
+{include file="index/header"}
+<body>
+<div class="fly-panel fly-panel-user">
+<div class="tpt—admin">
+<div class="tpt—btn">
+<a href="{:url('navtop/add')}"><i class="layui-icon">&#xe608;</i> 添加导航</a>
+</div>
+<form class="cl">
+<table width="100%">
+<tr>
+<th width="10%" align="center">导航排序</th>
+<th width="20%" align="center">导航名称</th>
+<th width="10%" align="center">前台显示</th>
+<th width="10%" align="center">窗口模式</th>
+<th width="30%" align="center">导航连接</th>
+<th width="10%" align="center">添加时间</th>
+<th width="10%" align="center">基本操作</th>
+</tr>
+{volist name="tptc" id="vo"}
+<tr>
+<td style="padding-left: 20px;">{if condition="$vo['level'] neq 0"}|----------{/if}{$vo.sort}</td>
+<td style="padding-left: 20px;">{if condition="$vo['level'] neq 0"}|----------{/if}{$vo.name}</td>
+<td align="center">
+<a change="{$vo.id}" onclick="changeshow(this);" {if condition="$vo['show'] eq 1"}class="layui-unselect layui-form-switch layui-form-onswitch"{else /}class="layui-unselect layui-form-switch"{/if}>
+<em>显示</em><i></i>
+</a>
+</td>
+<td align="center">
+<a change="{$vo.id}" onclick="changeblank(this);" {if condition="$vo['blank'] eq 1"}class="layui-unselect layui-form-switch layui-form-onswitch"{else /}class="layui-unselect layui-form-switch"{/if}>
+<em>新窗</em><i></i>
+</a>
+</td>
+<td style="padding-left: 20px;">{if condition="$vo['link'] neq ''"}{$vo.link}{else /}<span style="color:#FF5722;">暂无连接</span>{/if}</td>
+<td align="center">{$vo.time|date="Y-m-d",###}</td>
+<td align="center">
+<a class="layui-btn layui-btn-mini layui-btn-warm" href="{:url('navtop/edit',array('id'=>$vo['id']))}">修改</a> <a class="layui-btn layui-btn-mini layui-btn-danger del_btn" style="cursor: pointer;" member-id="{$vo.id}" title="删除" nickname="{$vo.name}">删除</a>
+</td>
+</tr>
+{/volist}
+</table>
+</form> 
+<script>
+function changeshow(o){
+  var change=$(o).attr("change");
+  $.ajax({
+	  type:"post",
+	  dataType:"json",
+      data:{change:change},
+	  url:"{:url('navtop/changeshow')}",
+	  success:function(data){
+		  if(data == 1){
+			  $(o).attr("class","layui-unselect layui-form-switch");
+	      }else{
+			  $(o).attr("class","layui-unselect layui-form-switch layui-form-onswitch");
+	      }
+	  }
+  });
+}
+function changeblank(o){
+  var change=$(o).attr("change");
+  $.ajax({
+	  type:"post",
+	  dataType:"json",
+      data:{change:change},
+	  url:"{:url('navtop/changeblank')}",
+	  success:function(data){
+		  if(data == 1){
+			  $(o).attr("class","layui-unselect layui-form-switch");
+	      }else{
+			  $(o).attr("class","layui-unselect layui-form-switch layui-form-onswitch");
+	      }
+	  }
+  });
+}
+</script>
+<script>
+layui.use('form',function(){
+  var form = layui.form()
+  ,jq = layui.jquery;
+
+  jq('.del_btn').click(function(){
+    var name = jq(this).attr('nickname');
+    var id = jq(this).attr('member-id');
+    layer.confirm('确定删除【'+name+'】?', function(index){
+      loading = layer.load(2, {
+        shade: [0.2,'#000']
+      });
+      jq.post('{:url("navtop/dels")}',{'id':id},function(data){
+        if(data.code == 200){
+          layer.close(loading);
+          layer.msg(data.msg, {icon: 1, time: 1000}, function(){
+            location.reload();
+          });
+        }else{
+          layer.close(loading);
+          layer.msg(data.msg, {icon: 2, anim: 6, time: 1000});
+        }
+      });
+    });
+  });
+
+})
+</script>
+</div>
+</div>
+{include file="index_footer"}
+</body>
+</html>
+
+
+

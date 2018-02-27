@@ -1,0 +1,113 @@
+{include file="index/header"}
+<body>
+<div class="fly-panel fly-panel-user">
+<div class="tpt—admin">
+<fieldset class="layui-elem-field layui-field-title">
+  <legend>修改板块</legend>
+</fieldset>
+   
+<form class="layui-form">
+  <input type="hidden" name="id" value="{$tptc.id}">
+  <div class="layui-form-item">
+    <label class="layui-form-label">板块名称</label>
+    <div class="layui-input-block">
+      <input type="text" name="name" value="{$tptc.name}" required lay-verify="required" placeholder="必填内容" autocomplete="off" class="layui-input">
+    </div>
+  </div>
+
+  <div class="layui-form-item" style="width: 300px;">
+    <label class="layui-form-label">所属板块</label>
+    <div class="layui-input-block">
+      <select name="tid">
+       <option value="0">顶级板块</option>
+        {volist name="tptcs" id="vo"}
+        <option value="{$vo.id}" {if condition="$tptc['id'] eq $vo['id']"}disabled=""{/if}{if condition="$tptc['tid'] eq $vo['id']"}selected="selected"{/if}>{if condition="$vo['tid'] eq 0"}{$vo.name}{/if}</option>
+        {/volist}
+      </select>
+    </div>
+  </div>
+
+  <div class="layui-form-item">
+    <label class="layui-form-label">所属类型</label>
+    <div class="layui-input-block">
+      <input type="radio" name="type" value="1" title="帖子" {if condition="$tptc['type'] eq 1"}checked=""{/if}>
+      <input type="radio" name="type" value="2" title="产品" disabled="">
+    </div>
+  </div>
+
+  <div class="layui-form-item">
+    <label class="layui-form-label">板块图片</label>
+    <div class="layui-input-block">
+      <input type="file" name="file" class="layui-upload-file" id="image" style="float: left;">
+	  <input type="text" name="pic" value="{$tptc.pic}" class="layui-input" style="position: absolute;left: 111px;top: 0px;width: 500px;">
+    </div>
+  </div>
+
+  <div class="layui-form-item">
+    <label class="layui-form-label">关键词</label>
+    <div class="layui-input-block">
+      <input type="text" name="keywords" value="{$tptc.keywords}" placeholder="请输入内容" autocomplete="off" class="layui-input">
+    </div>
+  </div>
+
+  <div class="layui-form-item layui-form-text">
+    <label class="layui-form-label">描述</label>
+    <div class="layui-input-block">
+      <textarea name="description" placeholder="请输入内容" class="layui-textarea">{$tptc.description}</textarea>
+    </div>
+  </div>
+
+  <div class="layui-form-item">
+    <div class="layui-input-block">
+	  <button class="layui-btn" lay-submit="" lay-filter="category_edit">立即提交</button>
+      <button class="layui-btn layui-btn-primary" onclick="history.go(-1)">返回</button>
+    </div>
+  </div>
+
+</form>
+<script>
+layui.use(['form', 'upload'],function(){
+  var form = layui.form()
+  ,jq = layui.jquery;
+  
+  layui.upload({
+    url: '{:url("upload/upimage")}'
+    ,elem:'#image'
+    ,before: function(input){
+      loading = layer.load(2, {
+        shade: [0.2,'#000']
+      });
+    }
+    ,success: function(res){
+      layer.close(loading);
+      jq('input[name=pic]').val(res.path);
+      layer.msg(res.msg, {icon: 1, time: 1000});
+    }
+  });
+
+  form.on('submit(category_edit)', function(data){
+    loading = layer.load(2, {
+      shade: [0.2,'#000']
+    });
+    var param = data.field;
+    jq.post('{:url("category/edit")}',param,function(data){
+      if(data.code == 200){
+        layer.close(loading);
+        layer.msg(data.msg, {icon: 1, time: 1000}, function(){
+          location.href = '{:url("category/index")}';
+        });
+      }else{
+        layer.close(loading);
+        layer.msg(data.msg, {icon: 2, anim: 6, time: 1000});
+      }
+    });
+    return false;
+  });
+
+})
+</script>
+</div>
+</div>
+{include file="index_footer"}
+</body>
+</html>
